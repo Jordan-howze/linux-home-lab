@@ -74,3 +74,50 @@ Only the Samba user jordanh can acces the shared folder
 The folder is accessible locally and can be connected to from other devices on the network 
 
 
+Part B — Multi-User File Share Setup with Samba
+1. Create Linux users:
+sudo adduser Rexm
+
+2. Create shared group:
+sudo groupadd sharedgroup
+
+3. Add users to the group:
+sudo usermod -aG sharedgroup jordanh
+sudo usermod -aG sharedgroup Rexm
+groups Rexm
+groups jordanh
+
+4. Add users to Samba:
+sudo smbpasswd -a Rexm
+sudo smbpasswd -e Rexm
+sudo pdbedit -L
+
+5. Create and set permissions for shared folder:
+sudo mkdir -p /srv/shared
+sudo chown -R jordanh:sharedgroup /srv/shared
+sudo chmod -R 770 /srv/shared
+ls -ld /srv/shared
+
+6. Configure Samba share:
+Edit /etc/samba/smb.conf and add:
+[Shared]
+    path = /srv/shared
+    read only = No
+    browsable = Yes
+    valid users = jordanh Rexm
+
+Restart Samba:
+sudo service smbd restart
+
+7. Test access as Rexm:
+smbclient //localhost/Shared -U Rexm
+
+At the prompt:
+smb: \> put testfile.txt
+
+Verify on Linux:
+ls -l /srv/shared
+
+Users jordanh and Rexm now have read/write access to the shared folder with proper permissions.
+
+
