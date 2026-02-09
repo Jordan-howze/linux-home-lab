@@ -11,7 +11,7 @@ This project was made to document my linux virtual machine setup and what I lear
 
 - Guest OS: Linux (Ubuntu)
 
-## What T Learned 
+## What I Learned 
 
 - Navigating the Linux file system 
 - Using basic terminal commands 
