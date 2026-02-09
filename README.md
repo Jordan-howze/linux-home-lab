@@ -28,3 +28,49 @@ I then delpoyed a basic HTML custom page to the web route directory.
 
 ### Result 
 The web server succefully hosted the created page at http://localhost. 
+
+##File Server Setup (Samba)
+
+I configured a Linux file server using Samba to share a folder over the network with controlled user access.
+
+### Steps Completed 
+
+1. Installed Samba server and client tools
+
+sudo apt update 
+sudo apt install samba smbclient -y
+
+2. Created a shared folder 
+
+mkdir shared
+
+3. Created a Samaba user mapped to a Linux user 
+
+sudo smbpasswd -a jordanh    #adds user 
+sudo smbpasswd -e jordanh    #enables user 
+
+4. Configured the Samba share 
+
+[Shared]
+path =/home/jordanh/shared
+read only = no
+browsable = yes
+valid users = jordanh
+
+5. Restarted Samba service 
+
+sudo sevice smbd restart
+
+6. Tested the share 
+
+smbclient //localhost/Shared - U jordanh
+
+Result 
+
+A secure, Linux file server is running on the VM
+
+Only the Samba user jordanh can acces the shared folder 
+
+The folder is accessible locally and can be connected to from other devices on the network 
+
+
