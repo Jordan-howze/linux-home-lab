@@ -121,3 +121,35 @@ ls -l /srv/shared
 Users jordanh and Rexm now have read/write access to the shared folder with proper permissions.
 
 
+## Part C – Service Monitoring Script
+
+### Overview
+In this part of the lab, I created and ran a basic Bash script to monitor the status of system services. The goal was to practice writing simple scripts, making them executable, and using Linux service management commands to check whether services are running.
+
+### What I Did
+- Created a Bash script to check the status of a service
+- Made the script executable and ran it from the terminal
+- Used Linux service management commands to verify service states
+- Troubleshot common errors such as missing files and incorrect commands
+
+### Skills Practiced
+- Bash scripting fundamentals  
+- File permissions (chmod)  
+- Service management with systemctl  
+- Running scripts from the terminal  
+- Troubleshooting command-line errors  
+
+### Commands Used
+- chmod +x monitor.sh  
+- ./monitor.sh  
+- systemctl status <service>  
+- ls, pwd  
+
+### Outcome
+By completing this section, I gained hands-on experience creating and executing scripts and learned how to verify whether Linux services are running. This reinforced basic scripting and system administration skills used in IT support and junior sysadmin roles.
+
+
+
+
+
+
